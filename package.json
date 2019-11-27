@@ -21,7 +21,7 @@
     "cross-env": "^5.0.0",
     "css-loader": "^0.28.1",
     "draggabilly": "^2.1.1",
-    "eslint": "^3.19.0",
+    "eslint": "^4.19.1",
     "eslint-config-airbnb": "^15.0.1",
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-config-jquery": "^1.0.1",
