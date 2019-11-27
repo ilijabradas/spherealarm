@@ -1,0 +1,420 @@
+//===================================
+// MEDIA QUERIES VARIABLES AND MIXINS
+//===================================
+$useIEFilters: 0;
+$phone: 480px;
+$tablet: 768px;
+$desktopSmall: 1024px;
+$desktopMedium: 1200px;
+$desktopLarge: 1600px;
+$debug: "";
+
+@function debug($d: "") {
+  $debug: $debug + "** #{$d} **";
+
+  @return $debug;
+}
+
+@mixin debug($d) {
+  @debug debug($d);
+}
+
+@mixin phone {
+  @media (min-width: #{$phone}) {
+    @content;
+  }
+}
+
+@mixin phone-max {
+  @media (max-width: #{$tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin tablet-max {
+  @media (min-width: #{$tablet}) and (max-width: #{$desktopSmall - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktopSmall {
+  @media (min-width: #{$desktopSmall}) {
+    @content;
+  }
+}
+
+@mixin desktopMedium {
+  @media (min-width: #{$desktopMedium}) {
+    @content;
+  }
+}
+
+@mixin desktopLarge {
+  @media (min-width: #{$desktopLarge}) {
+    @content;
+  }
+}
+
+@mixin retina {
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+    @content;
+  }
+}
+
+@mixin print {
+  @media print {
+    @content;
+  }
+}
+
+@mixin font-face($font-family, $file-path, $font-style) {
+  @font-face {
+    font-family: "#{$font-family}";
+    src: url("../fonts/#{$file-path}/#{$file-path}.eot");
+    src: url("../fonts/#{$file-path}/#{$file-path}.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/#{$file-path}/#{$file-path}.woff") format("woff"),
+    url("../fonts/#{$file-path}/#{$file-path}.woff2") format("woff2"),
+    url("../fonts/#{$file-path}/#{$file-path}.ttf") format("truetype"),
+    url('../fonts/#{$file-path}/#{$file-path}.svg##{$font-family}') format('svg');
+    font-style: $font-style;
+  }
+}
+
+@mixin WorkSans-Bold {
+  font-family: 'WorkSans-Bold', sans-serif;
+
+}
+
+@mixin WorkSans-Light {
+  font-family: 'WorkSans-Light', sans-serif;
+
+}
+
+@mixin WorkSans-Regular {
+  font-family: 'WorkSans-Regular', sans-serif;
+
+}
+
+@mixin WorkSans-SemiBold {
+  font-family: 'WorkSans-SemiBold', sans-serif;
+
+}
+
+@mixin paragraph($text-color, $text-line-height, $text-font-size) {
+  @extend %paragraphs;
+
+  font-size: $text-font-size;
+  color: $text-color;
+  line-height: $text-line-height;
+}
+
+@mixin header($text-color, $text-line-height, $text-font-size) {
+  @extend %headers;
+
+  font-size: $text-font-size;
+  color: $text-color;
+  line-height: $text-line-height;
+}
+
+@mixin link($link-color, $link-color-hover, $link-font-size: null, $link-line-height: null) {
+  @extend %links;
+
+  font-size: $link-font-size;
+  line-height: $link-line-height;
+  color: $link-color;
+
+  &:hover, &:focus, &:active {
+    color: $link-color-hover;
+  }
+}
+
+@mixin button($btn-background, $btn-font-size, $btn-line-height, $btn-border-radius, $btn-font-family, $btn-border, $btn-color: null) {
+  @extend %buttons;
+
+  background-color: $btn-background;
+  font-size: $btn-font-size;
+  line-height: $btn-line-height;
+  border-radius: $btn-border-radius;
+  font-family: $btn-font-family;
+  border: $btn-border;
+
+  &:hover, &:focus {
+    background-color: $btn-background;
+  }
+}
+
+@mixin list {
+  @extend %lists;
+}
+
+@mixin list-item($padding-left, $padding-right) {
+
+  @include tablet {
+    display: inline-block;
+    padding-left: $padding-left;
+    padding-right: $padding-right;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+  }
+}
+
+@mixin background($height-mobile: null, $height-tablet: null, $height-desktop: null) {
+  @extend %backgrounds;
+
+  height: $height-mobile;
+
+  @include tablet {
+    height: $height-tablet;
+  }
+
+  @include desktopMedium {
+    height: $height-desktop;
+  }
+}
+
+@mixin input($text-color, $background-color, $border-radius, $border, $box-shadow, $height: null, $padding: null) {
+  @extend %inputs;
+
+  border: $border;
+  box-shadow: $box-shadow;
+  background-color: $background-color;
+  padding: $padding;
+  color: $text-color;
+  border-radius: $border-radius;
+  height: $height;
+
+  &:focus,
+  &:invalid {
+    background-color: $background-color;
+    color: $text-color;
+  }
+
+  @include placeholder {
+    color: $text-color;
+  }
+
+  @include autofill {
+    -webkit-text-fill-color: $text-color;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+@mixin textarea($text-color, $background-color, $border-radius, $border, $box-shadow, $height: null, $padding: null) {
+  @extend %textareas;
+
+  border: $border;
+  box-shadow: $box-shadow;
+  background-color: $background-color;
+  padding: $padding;
+  color: $text-color;
+  border-radius: $border-radius;
+  height: $height;
+
+  &:focus,
+  &:invalid {
+    background-color: $background-color;
+    color: $text-color;
+  }
+
+  @include placeholder {
+    color: $text-color;
+  }
+
+  @include autofill {
+    -webkit-text-fill-color: $text-color;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+@mixin select($text-color, $background-color, $border-radius, $border, $box-shadow, $height: null, $padding: null) {
+  @extend %inputs;
+  background: $white url("../images/select-bg.svg") no-repeat 87% 45%;
+  background-size: 45px;
+  border: $border;
+  box-shadow: $box-shadow;
+  background-color: $background-color;
+  padding: $padding;
+  color: $text-color;
+  border-radius: $border-radius;
+  height: $height;
+
+  &:focus,
+  &:invalid {
+    background-color: $background-color;
+    color: $text-color;
+  }
+
+  @include placeholder {
+    color: $text-color;
+  }
+
+  @include autofill {
+    -webkit-text-fill-color: $text-color;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+@mixin autofill {
+  &:-webkit-autofill,
+  &:-webkit-autofill,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:hover {
+    @content;
+  }
+}
+
+// PLACEHOLDER COLOR
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+@mixin vertical-center {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+@mixin no-hover {
+  text-decoration: $link-hover-decoration;
+  background-color: transparent;
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: $link-hover-decoration;
+  }
+}
+
+@mixin visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  top: auto;
+
+}
+
+@mixin label {
+  display: block;
+  max-width: none;
+  margin-bottom: 0;
+  font-weight: normal;
+  @include WorkSans-Regular();
+
+}
+
+@mixin no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@mixin opacity($value: 0.5) {
+  opacity: $value;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" ($value * 100) ")";
+  filter: alpha(opacity=$value * 100);
+  zoom: 1;
+}
+
+@mixin border-radius($values) {
+  -moz-border-radius: $values;
+  -webkit-border-radius: $values;
+  border-radius: $values;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow: inset $top $left $blur $color;
+    -moz-box-shadow: inset $top $left $blur $color;
+    box-shadow: inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+@mixin translate($x, $y) {
+  @include transform(translate($x, $y));
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin admin-sticky-fix($offset: 0) {
+  $narrow-offset: 46px;
+  $wide-offset: 32px;
+
+  @if $offset != 0 and type-of($offset) == "number" {
+    $narrow-offset: $narrow-offset + $offset;
+    $wide-offset: $wide-offset + $offset;
+  }
+
+  .admin-bar & {
+    top: $narrow-offset;
+
+    @media screen and (min-width: 783px) {
+      top: $wide-offset;
+    }
+  }
+}

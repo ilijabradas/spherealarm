@@ -1,0 +1,15 @@
+.link-white {
+  @include link($link-white, $link-white-hover-color);
+}
+
+.link-gray {
+  @include link($link-gray, $link-gray-hover-color);
+}
+
+.link-dark-gray {
+  @include link($link-dark-gray, $link-dark-gray-hover-color);
+}
+
+.link-light-gray {
+  @include link($link-light-gray, $link-light-gray-hover-color);
+}

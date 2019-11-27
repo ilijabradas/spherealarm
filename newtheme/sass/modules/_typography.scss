@@ -1,0 +1,77 @@
+@include font-face("WorkSans-Bold", "WorkSans-Bold", normal);
+@include font-face("WorkSans-Light", "WorkSans-Light", normal);
+@include font-face("WorkSans-Regular", "WorkSans-Regular", normal);
+@include font-face("WorkSans-SemiBold", "WorkSans-SemiBold", normal);
+
+
+.h1-white {
+  @include header($text-color-white, $line-height-h1, $font-size-h1);
+  @include WorkSans-Light();
+
+  @include phone-max {
+    font-size: ceil($font-size-h1 * 0.75);
+    line-height: ceil($line-height-h1 * 0.75);
+  }
+}
+
+.h2-gray {
+  @include header($text-color-gray, $line-height-h2, $font-size-h2);
+
+  @include phone-max {
+    font-size: ceil($font-size-h2 * 0.9);
+    line-height: ceil($line-height-h2 * 0.9);
+  }
+}
+
+.h3-dark-gray {
+  @include header($text-color-dark-gray, $line-height-h3, $font-size-h3);
+
+  @include phone-max {
+    font-size: ceil($font-size-h2 * 0.8);
+    line-height: ceil($line-height-h2 * 0.8);
+  }
+}
+
+.h3-light-gray {
+  @include header($text-color-light-gray, $line-height-h3, $font-size-h3);
+
+  @include phone-max {
+    font-size: ceil($font-size-h2 * 0.8);
+    line-height: ceil($line-height-h2 * 0.8);
+  }
+}
+
+p {
+  .p-gray & {
+    @include paragraph($text-color-gray, $line-height-base, $font-size-base);
+  }
+}
+
+p a {
+  .p-gray & {
+    @include link($link-gray, $link-gray-hover-color);
+
+  }
+}
+p {
+  .p-dark-gray & {
+    @include paragraph($text-color-dark-gray, $line-height-base, $font-size-base);
+  }
+}
+
+p a {
+  .p-dark-gray & {
+    @include link($link-dark-gray, $link-gray-hover-color);
+
+  }
+}
+.p-gray {
+  @include paragraph($text-color-gray, $line-height-base, $font-size-base);
+}
+.p-gray-small {
+  @include paragraph($text-color-gray, $line-height-p-small, $font-size-p-small);
+}
+
+.p-dark-gray {
+  @include paragraph($text-color-dark-gray, $line-height-base, $font-size-base);
+}

@@ -1,0 +1,60 @@
+//
+// Buttons
+// --------------------------------------------------
+
+.btn-menu {
+  @extend %buttons;
+
+  background-color: transparent;
+  color: $white;
+  float: right;
+  font-size: 24px;
+  right: 0;
+  height: 100%;
+  width: 60px;
+  border-radius: 0;
+
+  @include vertical-center;
+  @include transition(background-color ease 0.4s);
+
+  &:before {
+    color: $white;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    @include box-shadow(0,0,0,0);
+    outline:none;
+  }
+
+  &:active,
+  &.active {
+    background-color: $white;
+    @include box-shadow(0,0,0,0);
+    outline:none;
+
+    &:before {
+      color: $gray;
+      content: "\F00D";
+    }
+  }
+
+  @include tablet {
+    font-size: 36px;
+  }
+
+
+  @include desktopMedium {
+    display: none;
+  }
+
+}
+
+.btn-large {
+  @include button($button-background-blue, $font-size-button-large, $line-height-button-large, $radius-button-large, $font-family-semi-bold, $border-button-large);
+}
+
+.btn-regular {
+  @include button($button-background-transparent, $font-size-button-regular, $line-height-button-regular, $radius-button-regular, $font-family-bold, $border-button-regular);
+}

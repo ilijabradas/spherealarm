@@ -1,0 +1,84 @@
+footer{
+  border-top: 3px solid #eaeaea;
+  margin-top: 60px;
+  text-align: center;
+  .inner-wrapper{
+    margin-top: 70px;
+    .logo{
+      img{
+       max-width: 150px;
+        @include tablet{
+          max-width: none;
+        }
+      }
+    }
+    .secondary{
+      margin: 32px 0 26px;
+      li{
+        display: block;
+        text-align: center;
+        padding: 15px 0;
+        @include tablet{
+          padding-top: 0;
+          padding-bottom: 0;
+          @include list-item(10px,10px);
+        }
+        a{
+          display: block;
+          font-size: 15px;
+          line-height: 24px;
+          color: $gray;
+          text-transform: capitalize;
+
+          &:hover,
+          &:focus,
+          &:active {
+              @include no-hover();
+
+          }
+        }
+      }
+    }
+    .social{
+      li{
+        display: inline-block;
+        padding-left: 10px;
+        padding-right: 10px;
+
+        &:first-child {
+          padding-left: 0;
+        }
+
+        &:last-child {
+          padding-right: 0;
+        }
+        a{
+          &:hover,
+          &:focus,
+          &:active {
+            @include no-hover();
+
+          }
+
+          i{
+            color: #007eb7;
+            font-size: 25px;
+            &.fa-twitter{
+              font-size: 30px;
+            }
+            &.fa-instagram{
+              font-size: 28px;
+            }
+          }
+        }
+      }
+    }
+    .copyright{
+      margin-top: 18px;
+      font-size: 15px;
+      line-height: 24px;
+      color: $gray;
+      margin-bottom: 110px;
+    }
+  }
+}

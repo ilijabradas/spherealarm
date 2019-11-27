@@ -1,0 +1,279 @@
+.hero-section {
+  .background-hero-section {
+    @include background(910px, 1040px, 795px);
+    background-image: radial-gradient(circle at 0 0,#0081b5,#0ea2dc);
+    .outer-wrapper {
+      text-align: center;
+      padding-top: 70px;
+      position: relative;
+      @include clearfix();
+      @include desktopMedium {
+        max-width: 1140px;
+        padding-top: 175px;
+        margin: 0 auto;
+      }
+      .content-wrapper {
+        width: 90%;
+        margin: 0 auto 50px;
+        max-width: 530px;
+        @include desktopMedium {
+          float: left;
+          text-align: left;
+          width: 100%;
+          margin: 132px 0 0 7px;
+          max-width: 530px;
+        }
+        h1 {
+
+        }
+        .buttons-wrapper {
+          margin-top: 80px;
+          @include desktopMedium {
+            margin-top: 56px;
+          }
+          .btn-regular {
+            max-width: 300px;
+            padding: 0 30px;
+            margin: 0 auto 20px;
+            @include tablet {
+              margin: 0 8px;
+              max-width: none;
+              display: inline-block;
+            }
+            .fa {
+              position: relative;
+              left: -8px;
+              top: 3px;
+              font-size: 23px;
+            }
+          }
+        }
+      }
+      .image-wrapper {
+        position: relative;
+        top: 30px;
+        @include desktopMedium {
+          float: right;
+        }
+        img {
+          width: 100%;
+          max-width: 600px;
+        }
+      }
+    }
+  }
+}
+
+.about-section {
+  margin-top: 193px;
+  text-align: center;
+  @include desktopMedium {
+    margin-top: 193px;
+  }
+  .about-content-wrapper {
+    h2 {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    img {
+      margin: 30px 0;
+      @include desktopMedium {
+        margin: 30px 0 25px;
+      }
+    }
+    p {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto 20px;
+      padding: 0 20px;
+      @include tablet {
+        padding: 0;
+      }
+      @include desktopMedium {
+        max-width: 870px;
+
+      }
+    }
+    .about-image {
+      max-width: 100%;
+      margin-top: 60px;
+      @include desktopMedium {
+        margin-top: 55px;
+      }
+
+    }
+  }
+  .about-points-wrapper {
+    margin-top: 50px;
+    @include desktopMedium {
+      margin-top: 100px;
+    }
+    .point-wrapper {
+      margin-bottom: 30px;
+      border-bottom: 3px solid #eaeaea;
+      @include desktopMedium {
+        @include clearfix();
+        max-width: 1110px;
+        margin: 0 auto 110px;
+        position: relative;
+      }
+      .image-wrapper {
+        @include desktopMedium {
+          float: left;
+          margin-left: 65px;
+          margin-right: 0;
+        }
+        img {
+          width: 100%;
+          max-width: 430px;
+        }
+      }
+      .content-wrapper {
+        @include desktopMedium {
+          float: right;
+          @include vertical-center();
+          right: 40px;
+          left: auto;
+          margin-top: -15px;
+
+        }
+        h2 {
+          padding: 50px 20px 0;
+          max-width: 500px;
+          margin: 0 auto;
+          @include tablet {
+            padding: 50px 0 0;
+          }
+          @include desktopMedium {
+            padding: 0;
+          }
+        }
+        img {
+          margin: 30px 0;
+          @include desktopMedium {
+            margin: 30px 0 25px;
+          }
+        }
+        p {
+          padding: 0 20px 50px;
+          max-width: 500px;
+          margin: 0 auto;
+          @include tablet {
+            padding: 0 0 50px;
+          }
+          @include desktopMedium {
+            padding: 0;
+            max-width: 530px;
+            text-align: left;
+          }
+        }
+      }
+
+      &.reverse {
+        .image-wrapper {
+          @include desktopMedium {
+            float: right;
+            margin-right: 72px;
+            margin-left: 0;
+          }
+        }
+        .content-wrapper {
+          @include desktopMedium {
+            float: left;
+            left: 65px;
+            right: auto;
+            margin-top: -30px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.contact-us-section {
+  text-align: center;
+  margin-top: 70px;
+  @include desktopMedium{
+    margin-top: 120px;
+  }
+  .contact-content-wrapper {
+    max-width: 500px;
+    margin: 0 auto 30px;
+    @include desktopMedium{
+      max-width: 470px;
+    }
+    h2 {
+      padding: 0 20px;
+      @include tablet{
+        padding: 0;
+      }
+    }
+    img {
+      margin: 30px 0;
+      @include desktopMedium {
+        margin: 30px 0 25px;
+      }
+    }
+    p {
+      padding: 0 20px;
+      @include tablet{
+        padding: 0;
+      }
+    }
+  }
+  .contact-form-wrapper {
+    max-width: 500px;
+    margin: 0 auto;
+    @include desktopMedium{
+      max-width: 600px;
+    }
+    form {
+      padding: 0 20px;
+      @include tablet{
+        padding: 0;
+      }
+      input[type=text], input[type=email] {
+        margin-bottom: 20px;
+      }
+      textarea{
+        margin-bottom: 32px;
+      }
+      input[type=submit] {
+        width: 100%;
+      }
+      .ajax-loader{
+        visibility: hidden;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: none;
+        padding: 0;
+        margin: 20px 0 0 0;
+        vertical-align: middle;
+      }
+      .wpcf7-not-valid-tip{
+        color: $not-valid;
+        font-size: 14px;
+        @include WorkSans-SemiBold();
+        display: block;
+        margin-bottom: 10px;
+      }
+      .wpcf7-response-output {
+        margin: 0 5px;
+        padding: 0;
+        border: 0;
+        @include WorkSans-SemiBold();
+        color: $not-valid;
+      }
+      .wpcf7-validation-errors,
+      .wpcf7-acceptance-missing {
+        border: 0;
+      }
+      .wpcf7-mail-sent-ok {
+        color: $valid !important;
+      }
+    }
+
+  }
+}

@@ -1,0 +1,87 @@
+// $bootstrap-sass-asset-helper: false !default;
+//
+// $icon-font-path: if($bootstrap-sass-asset-helper, "bootstrap/", "~bootstrap-sass/assets/fonts/bootstrap/");
+// $icon-font-name: "glyphicons-halflings-regular";
+// $icon-font-svg-id: "glyphicons_halflingsregular";
+
+$font-family-regular: "WorkSans-Regular", sans-serif;
+$font-family-light: "WorkSans-Light", sans-serif;
+$font-family-bold: "WorkSans-Bold", sans-serif;
+$font-family-semi-bold: "WorkSans-SemiBold", sans-serif;
+
+$body-bg: #fff;
+
+$white: #fff;
+$gray: #666;
+$light-gray: #7d7d7d;
+$dark-gray: #333;
+$not-valid: #ff6666;
+$valid:#88d68f;
+
+$link-white: $white;
+$link-gray: $gray;
+$link-light-gray: $light-gray;
+$link-dark-gray: $dark-gray;
+
+
+$link-white-hover-color: $link-white;
+$link-gray-hover-color: $link-gray;
+$link-light-gray-hover-color: $link-light-gray;
+$link-dark-gray-hover-color: $link-dark-gray;
+
+
+$link-hover-decoration: none;
+
+$text-color-white: $white;
+$text-color-gray: $gray;
+$text-color-light-gray: $link-gray;
+$text-color-dark-gray: $dark-gray;
+
+$button-background-blue: #0ea2dc;
+$button-background-transparent: transparent;
+
+$font-size-button-large: 24px;
+$line-height-button-large: 58px;
+$radius-button-large: 7px;
+$border-button-large: 1px solid #0ea2dc;
+
+$font-size-button-regular: 13px;
+$line-height-button-regular: 54px;
+$radius-button-regular: 35px;
+$border-button-regular: 2px solid $white;
+
+
+$font-size-h1: 45px;
+$line-height-h1: 53px;
+
+$font-size-h2: 40px;
+$line-height-h2: 48px;
+
+$font-size-h3: 24px;
+$line-height-h3: 24px;
+
+$font-size-p: 15px;
+$line-height-p: 24px;
+
+$font-size-p-small: 13px;
+$line-height-p-small: 21px;
+
+$font-size-base: $font-size-p;
+$line-height-base: $line-height-p;
+
+
+$input-background: rgba(255, 255, 255, 1);
+$input-border-radius: 6px;
+$input-height: 60px;
+$input-padding: 3px 21px 0;
+$input-box-shadow: 0px 1px 10px 2px rgba(234, 234, 234, 1);
+$input-border: 1px solid #eaeaea;
+
+$textarea-background: rgba(255, 255, 255, 1);
+$textarea-border-radius: 6px;
+$textarea-height: 210px;
+$textarea-padding: 22px 26px;
+$textarea-box-shadow: 0px 1px 10px 2px rgba(234, 234, 234, 1);
+$textarea-border: 1px solid #eaeaea;
+
+$select-padding: 3px 16px 0;

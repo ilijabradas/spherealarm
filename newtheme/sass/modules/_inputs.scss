@@ -1,0 +1,13 @@
+
+input:not([type=submit]):not([type="checkbox"]) {
+  @include input($text-color-light-gray, $input-background, $input-border-radius, $input-border, $input-box-shadow, $input-height, $input-padding);
+}
+
+
+textarea {
+  @include textarea($text-color-light-gray, $textarea-background, $textarea-border-radius, $textarea-border, $textarea-box-shadow, $textarea-height, $textarea-padding);
+}
+
+select {
+  @include select($text-color-light-gray, $input-background, $input-border-radius, $input-border, $input-box-shadow, $input-height, $select-padding);
+}

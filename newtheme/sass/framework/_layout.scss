@@ -1,0 +1,68 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: $font-family-regular;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  background-color: $body-bg;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
+
+  body {
+    display: flex;
+    flex-direction: column;
+    ul {
+      @include list;
+    }
+    .wrapper {
+
+      a {
+        @include no-hover;
+
+      }
+
+      //@each $name in "header a" ".btn-large" ".btn-regular" ".link-white" ".link-gray" ".link-dark-gray" {
+      //  #{$name} {
+      //    @include no-hover;
+      //
+      //
+      //    @if $name == ".btn-large" or  $name = ".btn-regular" or $name = ".link-white"{
+      //      color: $text-color-white;
+      //      font-weight: normal;
+      //      &:hover, &:focus {
+      //       color: $text-color-white;
+      //      }
+      //    }
+      //    @if $name == ".link-dark-gray" {
+      //      color: $text-color-dark-gray;
+      //      font-weight: bold;
+      //      &:hover, &:focus {
+      //       color: $text-color-dark-gray;
+      //      }
+      //    }
+      //    @if $name == ".link-gray" {
+      //      color: $text-color-gray;
+      //      font-weight: normal;
+      //      &:hover, &:focus {
+      //       color: $text-color-gray;
+      //      }
+      //    }
+      //
+      //  }
+      //}
+
+      flex: 1 0 auto;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    #wpadminbar {
+      position: fixed;
+    }
+  }
+}
