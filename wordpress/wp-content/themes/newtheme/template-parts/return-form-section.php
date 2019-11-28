@@ -31,7 +31,7 @@
                 <input type="text" name="name" id="name" placeholder="Your Name"/>
             </div>
             <div class="input-wrapper">
-                <input type="text" name="email" id="email" placeholder="Email (same email as you order)"/>
+                <input type="text" name="email" id="email" placeholder="Email (the one you provided to place your order)"/>
             </div>
             <div class="input-wrapper">
                 <input type="text" name="order" id="order" placeholder="Order Number"/>
