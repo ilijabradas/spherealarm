@@ -136,6 +136,7 @@ sphere.registration_step_two = {
             .text() !== 'Select') {
           console.log(form.valid());
           this.submitForm();
+            $('#submit-step-two').prop('disabled', true);
         } else {
           console.log('Form Invalid');
         }
@@ -171,9 +172,11 @@ sphere.registration_step_two = {
           window.location.replace(`${WPURLS.siteurl}/register/success/`);
           storageapi.reset();
         }
+
       },
       fail : function(response) {
         console.log(response);
+          $('#submit-step-two').prop('disabled', false);
         $('#result').addClass('error').html('Something went wrong. Refresh page and try again.');
       }
     });

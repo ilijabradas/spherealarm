@@ -78,7 +78,9 @@ class Registration_List_Table extends WP_List_Table
 
         $data = $this->get_data();
         usort($data, array(&$this, 'usort_reorder'));
-        $perPage = 10;
+//        $perPage = 10;
+        //  Instead of simply assigning a number the user specified value is loaded
+        $perPage = $this->get_items_per_page('records_per_page', 5);
         $currentPage = $this->get_pagenum();
         $totalItems = count($data);
         $this->set_pagination_args(array(
@@ -86,7 +88,9 @@ class Registration_List_Table extends WP_List_Table
             'per_page' => $perPage
         ));
         $data = array_slice($data, (($currentPage - 1) * $perPage), $perPage);
-        $this->_column_headers = array($columns, $hidden, $sortable);
+//        $this->_column_headers = array($columns, $hidden, $sortable);
+//        The method get_column_info() returns all, the hidden and the sortable columns.
+    $this->_column_headers = $this->get_column_info();
         $this->items = $data;
         $this->process_bulk_action();
 
@@ -199,5 +203,7 @@ class Registration_List_Table extends WP_List_Table
             echo '<a style="line-height: 2; padding: .2em; text-decoration: none;" href=' . $ajax_url . '>Export Excel XML</a>';
         }
     }
-
+    function no_items() {
+        _e( 'No registration data found.' );
+    }
 }

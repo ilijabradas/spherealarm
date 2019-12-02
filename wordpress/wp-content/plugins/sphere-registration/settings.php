@@ -54,11 +54,43 @@ function wpsr_init()
 function registration_admin_menu()
 {
 
-    add_menu_page('Registration', 'Registration', 'manage_options', 'wpsr', 'registration_page_handler', 'dashicons-groups', 2);
+    $hook =  add_menu_page('Registration', 'Registration', 'manage_options', 'wpsr', 'registration_page_handler', 'dashicons-groups', 2);
+     // This only displays the option field and apply button, saving and loading the data has to be defined separately.
+     // WordPress provides a filter called set-screen-option to take care of this:
+    add_action( "load-$hook", 'add_options' );
 }
 
 add_action('admin_menu', 'registration_admin_menu');
 
+//Adding the checkboxes for hiding/showing the columns is done by WordPress automatically.
+// You just have to make sure that your derived class is instantiated before the screen option panel
+// is rendered so that the parent class can retrieve the column names.
+// To accomplish this the corresponding code is moved into the method add_options():
+function add_options() {
+    global $obj;
+    $option = 'per_page';
+    $args = array(
+        'label' => 'Records',
+        'default' => 10,
+        'option' => 'records_per_page'
+    );
+    add_screen_option( $option, $args );
+
+    $obj = new Registration_List_Table;
+}
+
+add_filter('set-screen-option', 'wpsr_set_option', 10, 3);
+
+//The option is stored in the table usermeta in the database so each user has his own setting.
+//The first line tells WordPress to call the ‘wpsr_set_option’ function when it is applying the ‘set-screen-options’ filters,
+// with a (default) priority of 10, and that our function will expect 3 parameters to be passed to it (the default is only 1 for add_filter).
+
+//The function wpsr_set_option checks if the option that WordPress is processing is our ‘records_per_page’ option.
+// If it is our option, we return the value so that WordPress will save it to the database.
+function wpsr_set_option($status, $option, $value) {
+    if ( 'records_per_page' == $option ) return $value;
+    return $status;
+}
 /**
  * Here we create an instance of our class, prepare the items and call display() to display the table.
  */
@@ -111,3 +143,6 @@ function csv_pull_wprs()
 }
 
 add_action('wp_ajax_csv_pull', 'csv_pull_wprs');
+
+//$special = array('_title', 'cb', 'comment', 'media', 'name', 'title', 'username', 'blogname');
+//avoid some strings as keynames since they are treated by WordPress specially

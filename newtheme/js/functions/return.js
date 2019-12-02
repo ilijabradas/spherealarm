@@ -83,6 +83,8 @@ sphere.return = {
             .text() !== 'Please select return reason') {
           console.log(form.valid());
           this.submitForm();
+          $('#submit-return').prop('disabled', true);
+            $('.loader').css('display', 'block');
         } else {
           console.log('Form Invalid');
         }
@@ -110,18 +112,24 @@ sphere.return = {
       success : function(response) {
         console.log(response);
         if (response.error) {
-          $('#result').addClass('error').html(response.message);
+          $('#result').addClass('error').html(response.data.message);
         }
         if (response.success) {
-          $('#result').addClass('success').html(response.message);
+          $('#result').addClass('success').html(response.data.message);
 
           // window.location.replace(`${WPURLS.siteurl}/registration/success/`);
           $('#return-form').trigger('reset');
+          $('.custom-select-trigger-action').text('Please select an action');
+          $('.custom-select-trigger-return').text('Please select return reason');
           storageapi.reset2();
         }
+          $('#submit-return').prop('disabled', false);
+          $('.loader').css('display', 'none');
       },
       fail : function(response) {
         console.log(response);
+          $('#submit-return').prop('disabled', false);
+          $('.loader').css('display', 'none');
         $('#result').addClass('error').html('Something went wrong. Refresh page and try again.');
       }
     });

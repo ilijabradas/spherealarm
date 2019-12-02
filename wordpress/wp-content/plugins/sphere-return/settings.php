@@ -48,13 +48,14 @@ add_action('init', 'wpsret_init', 10, 0);
 
 function wpsret_init()
 {
+
     do_action('wpsret_init');
 }
 
 function return_admin_menu()
 {
 
-    add_menu_page('Return', 'Return', 'manage_options', 'wpsret', 'return_page_handler', 'dashicons-groups', 2);
+    add_menu_page('Return', 'Return', 'manage_options', 'wpsret', 'return_page_handler', 'dashicons-admin-tools', 3);
 }
 
 add_action('admin_menu', 'return_admin_menu');

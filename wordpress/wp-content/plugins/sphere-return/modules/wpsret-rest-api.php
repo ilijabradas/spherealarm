@@ -31,12 +31,16 @@ function rest_return_handler(WP_REST_Request $request)
     }
     try {
        $response = saveReturnInDB($params);
+        sendBulkEmail( $params['return']['email'], $params['return']['name'],
+            $params['return']['order'], $params['return']['action'],
+            $params['return']['return'], $params['return']['replacement'], $params['return']['created_at'] );
     } catch (\Exception $e) {
         echo $e->getMessage();
         exit(0);
     }
 
     return new WP_REST_Response(array('response' => $response, 'message' => 'You are suuccessfully registrated.', 'params' => $params, 'success' => true), 200);
+
 
 }
 
@@ -56,5 +60,24 @@ function saveReturnInDB($params)
     if (is_a($result, 'WP_Error')) {
         throw new \Exception('Couldn\'t save data in Database');
     }
+
     return $result;
+}
+
+function sendBulkEmail($email, $name, $order, $action, $return, $replacement, $created_at) {
+    $emails = array(
+         sanitize_text_field($email),
+          get_option('admin_email')
+    );
+    $subject = 'Sphere Alarm Return Inquire';
+//    $template = WP_PLUGIN_DIR.'/sphere-return/emails/template.html';
+//    $body = file_get_contents($template); Reads entire file into a string
+    ob_start(null, 0, [PHP_OUTPUT_HANDLER_CLEANABLE,PHP_OUTPUT_HANDLER_REMOVABLE]);
+    include WPSRET_PLUGIN_DIR . '/emails/template.php';
+    $body = ob_get_clean();
+    $headers = array('Content-Type: text/html; charset=UTF-8');
+
+    wp_mail( $emails, $subject, $body, $headers );
+   return  wp_send_json_success( array('message'=>'You are suuccessfully registrated.', 'success' => true) );
+
 }
