@@ -231,7 +231,6 @@ function getReturnReasons() {
         array('abbrev' => 'Wrong Item Shipped', 'reason' => 'Wrong Item Shipped'),
         array('abbrev' => 'Missing Parts', 'reason' => 'Missing Parts'),
         array('abbrev' => 'Defective', 'reason' => 'Defective'),
-        array('abbrev' => 'Unknown subscription purchase', 'reason' => 'Unknown subscription purchase'),
         array('abbrev' => 'Other', 'reason' => 'Other'),
     );
     return $return_reasons;
