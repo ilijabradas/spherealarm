@@ -48,6 +48,11 @@ $debug: "";
     @content;
   }
 }
+@mixin desktopSmall-max {
+  @media (max-width: #{$desktopMedium - 1px}) {
+    @content;
+  }
+}
 
 @mixin desktopMedium {
   @media (min-width: #{$desktopMedium}) {

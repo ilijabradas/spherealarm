@@ -16,14 +16,22 @@
     }
     .return-form {
       max-width: 1114px;
-      margin: 215px auto 0;
+      width: 100%;
+      margin: 31px auto 0;
+      @include desktopMedium {
+        margin: 215px auto 0;
+      }
       .headline {
-        font-size: 40px;
-        line-height: normal;
+        font-size: 30px;
+        line-height: 39px;
         color: $gray;
         @include WorkSans-Regular();
         text-align: center;
         letter-spacing: 0.5px;
+        @include desktopMedium {
+          font-size: 40px;
+          line-height: normal;
+        }
       }
       #result {
         font-size: 14px;
@@ -40,61 +48,100 @@
       #return-form {
         @include clearfix();
         .guide-wrapper {
-          float: left;
-          width: 50%;
-          margin-top: 40px;
+          width: 90%;
+          margin: 17px auto 0;
+          @include desktopMedium {
+            float: left;
+            width: 50%;
+            margin: 40px auto 0;
+          }
           .item {
             @include clearfix();
-            margin-bottom: 24px;
+            margin-bottom: 16px;
+            @include desktopMedium {
+              margin-bottom: 24px;
+            }
             &:last-child {
               margin-bottom: 0;
             }
             &:nth-child(3) {
               .content {
-                margin-top: 22px;
-                margin-left: 17px;
+                margin-top: 7px;
+                margin-left: 8px;
+                @include desktopMedium {
+                  margin-top: 22px;
+                  margin-left: 17px;
+                }
               }
               .number {
-                padding-top: 21px;
+                padding-top: 7px;
+                @include desktopMedium {
+                  padding-top: 21px;
+                }
               }
             }
             img {
               float: left;
-              width: 65px;
+              width: 57px;
+              @include desktopMedium {
+                width: 65px;
+              }
             }
             .number {
               float: left;
               width: 10px;
-              margin-left: 26px;
-              padding-top: 10px;
+              margin-left: 21px;
+              padding-top: 1px;
               @include WorkSans-Bold();
               font-size: 15px;
               line-height: 24px;
               color: $gray;
+              @include desktopMedium {
+                margin-left: 26px;
+                padding-top: 10px;
+
+              }
             }
             .content {
               float: left;
-              width: calc(100% - 130px);
-              margin-left: 11px;
-              margin-top: 10px;
-              font-size: 15px;
-              line-height: 24px;
+              width: calc(100% - 96px);
+              margin-left: 8px;
+              margin-top: 0;
+              font-size: 13px;
+              line-height: 22px;
               color: $gray;
               letter-spacing: 0.3px;
+              @include desktopMedium {
+                width: calc(100% - 130px);
+                margin-left: 11px;
+                margin-top: 10px;
+                font-size: 15px;
+                line-height: 24px;
+              }
             }
           }
 
         }
         .form-wrapper {
-          float: left;
-          width: 47%;
-          margin-left: 3%;
-          margin-top: 41px;
+          width: 89%;
+          margin: 29px auto 0;
+          @include desktopMedium {
+            float: left;
+            width: 47%;
+            margin-left: 3%;
+            margin-top: 41px;
+          }
           .input-wrapper {
-            margin-bottom: 29px;
+            margin-bottom: 18px;
             position: relative;
+
             @include desktopMedium {
               margin-bottom: 31px;
+            }
+            input {
+              @include desktopSmall-max {
+                height: 56px;
+              }
             }
             textarea {
               padding: 22px 21px;
@@ -166,6 +213,9 @@
               box-shadow: 0px 9px 10px 2px #eaeaea;
               transition: all .4s ease-in-out;
               opacity: 0;
+              max-height: 0;
+              overflow-y: scroll;
+              overflow-x: hidden;
               visibility: hidden;
               pointer-events: none;
 
@@ -174,7 +224,22 @@
               opacity: 1;
               visibility: visible;
               pointer-events: all;
+              max-height: 300px;
 
+              &::-webkit-scrollbar-track {
+                -webkit-box-shadow: inset 0 0 1px rgb(255, 255, 255);
+                background-color: $white;
+              }
+
+              &::-webkit-scrollbar {
+                width: 5px;
+                background-color: rgba(14, 162, 220, 0.15);
+              }
+
+              &::-webkit-scrollbar-thumb {
+                background-color: rgba(14, 162, 220, 0.15);
+                border: 1px solid rgba(14, 162, 220, 0.15);
+              }
             }
 
             .custom-option-action {
@@ -269,7 +334,7 @@
               opacity: 0;
               visibility: hidden;
               pointer-events: none;
-              max-height: 300px;
+              max-height: 0px;
               overflow-y: scroll;
               overflow-x: hidden;
 
@@ -278,6 +343,7 @@
               opacity: 1;
               visibility: visible;
               pointer-events: all;
+              max-height: 300px;
 
               &::-webkit-scrollbar-track {
                 -webkit-box-shadow: inset 0 0 1px rgb(255, 255, 255);
@@ -337,9 +403,11 @@
           }
           .btn-large {
             width: 100%;
-            margin-top: 40px;
+            margin-top: 23px;
+            line-height: 53px;
             @include desktopMedium {
               margin-top: 34px;
+              line-height: 58px;
             }
           }
         }

@@ -11,7 +11,7 @@ function readyFunction() {
     $.responsivizr({
       helper: 'dev',
       debug: 1,
-      overlay: '../../wp-content/themes/newtheme/mockups/return.png',
+      overlay: '../../wp-content/themes/newtheme/mockups/return_mobile.png',
     });
     // $('.turn-on').click(); // UNCOMMENT TO ACTIVATE OVERLAY ON READY
   }
